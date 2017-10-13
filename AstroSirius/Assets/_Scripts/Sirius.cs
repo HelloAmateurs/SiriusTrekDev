@@ -60,6 +60,7 @@ public class Sirius : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        // changing levels when hitting planet from starfield
         print("Triggered: " + other.gameObject.name);
         if (other.gameObject.tag == "Planet")
         {
@@ -69,6 +70,7 @@ public class Sirius : MonoBehaviour
 
             Invoke("loadLevel", 1.5f);
         }
+        // crashing into asteriods
         if (other.gameObject.tag == "Asteroid")
         {
             StartCoroutine(soundRoutine());
@@ -88,6 +90,7 @@ public class Sirius : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         audioSource.PlayOneShot(meow);
     }
+    // the crane in desert world
     void updateLine()
     {
 		craneLine.SetPosition(0, this.transform.position - new Vector3(0f, 7f, 0f));

@@ -5,10 +5,11 @@ public class Asteroid : Planet
 
 {
     public float scrollSpeed = 14f;
-
     float currentZRot = 0.0f;
+    // reference to particles that trigger on collision
     public ParticleSystem asteroidParticles;
 
+    // asteriods move down y axis with some rotation
     public override void Move()
     {
         Vector3 tempPos = pos;
@@ -22,6 +23,7 @@ public class Asteroid : Planet
         transform.rotation = Quaternion.Euler(rot);
     }
 
+    // use Utils bounds functions to check offscree and destroy if offscreen
     protected override void CheckOffscreen()
     {
         if (bounds.size == Vector3.zero)

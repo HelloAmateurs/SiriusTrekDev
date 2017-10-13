@@ -34,6 +34,7 @@ public class Main : MonoBehaviour
        
     }
 
+	// this controls the order of the intro title and tutorial
 	IEnumerator OliverRoutine()
 	{
 		Spawn(prefabLogo, ref currentLogo, new Vector3(0, 50, -5));
@@ -59,13 +60,9 @@ public class Main : MonoBehaviour
     void Start()
     {
         currentLevel = Instantiate(level01);
-
+		// intro and tutorial objects
 		StartCoroutine(OliverRoutine());
 
-    }
-    void Update()
-    {
-		
     }
 
     public void loadLevel()
@@ -75,12 +72,14 @@ public class Main : MonoBehaviour
         currentLevel = Instantiate(level02);
     }
 
+	// spawn is used for planets and intro text
 	public void Spawn(GameObject prefab, ref GameObject instance, Vector3 pos)
 	{
 		instance = Instantiate(prefab);
 		instance.transform.position = pos;
 	}
 
+	// spawns random asteroid from array within the cambounds
 	public void SpawnAsteroid() 
 	{
 		if (currentLevel.name.Contains(level01.name)) 

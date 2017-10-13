@@ -21,6 +21,7 @@ public class Planet : MonoBehaviour
 
     public float moveTimer = 0.0f;
     public float duration = 0.5f;
+    // planet moves down screen in a wide cosine path
     public virtual void Move()
     {
         moveTimer += Time.deltaTime;

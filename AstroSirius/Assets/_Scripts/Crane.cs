@@ -11,10 +11,13 @@ public class Crane : MonoBehaviour
     public Animator animationController;
     public Text giraffeMessage;
 
+    // jon's disco things
 	public GameObject DiscoLights;
 	public Animation DiscoPrepare;
 	public ParticleSystem DiscoParticles;
 	public GameObject DiscoCanvas;
+
+    // audio things
 	public AudioClip woohoo;
     public AudioClip snap;
     AudioSource audioSource;
@@ -28,6 +31,8 @@ public class Crane : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
+        // if the crane hits a giraffe and giraffe is able to be hooked,
+        // set giraffe as child and play the sound
         if (other.gameObject.tag == "Giraffe" && canBeHooked == true)
         {
             Crane.giraffeHit = true;
@@ -36,7 +41,9 @@ public class Crane : MonoBehaviour
             giraffeGO.transform.SetParent(this.gameObject.transform);
             audioSource.PlayOneShot(snap);
         }
-
+        // if the crane hits the base and the giraffe is attached, 
+        // set giraffe as child of base and reset position
+        // then win the game
         if (other.gameObject.tag == "Base" && giraffeGO.transform.parent.tag == "CraneWeight")
         {
             giraffeGO.transform.position = baseGO.transform.position;
